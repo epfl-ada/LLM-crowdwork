@@ -1,0 +1,83 @@
+<!-- You must include this JavaScript file -->
+
+<style>
+
+    @media (min-device-width: 320px) {
+        p, h3, li, ul, #myfreakingbutton, textarea {
+            font-size: 1rem;
+        }
+    }
+
+    @media (min-device-width: 600px) {
+        p, h3, li, ul, #myfreakingbutton, textarea {
+            font-size: 1rem;
+        }
+    }
+
+</style>
+
+<script>
+    window.addEventListener('load', function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const user_id = urlParams.get('PROLIFIC_PID');
+        if (user_id == null){
+            document.getElementById("maindiv").innerHTML = "Invalid URL"
+        }
+        else {
+            document.getElementById("pid").innerHTML = user_id;
+        }
+    })
+</script>
+<div style="text-align: center;" id="maindiv">
+    <div style="margin: 3pt; padding: 3pt;  border: 1px solid #333; width:75%; display:inline-block; text-align: left">
+
+        <p>
+            Thanks for completing this task. We would like you to answer a couple of questions about AI-usage.
+
+            If you did use AI tools on the previous task you will still be compensated after answering these questions, even if we said we would be monitoring AI-use.
+
+            <b>Your Prolific participant account will not be affected negatively based on how you answer these questions!</b>
+        </p>
+    </div>
+    <form
+            action="https://formspree.io/f/{}"
+            method="POST"
+    >
+
+        <p>Did you use AI tools like ChatGPT to accomplish the previous task?</p>
+          <input type="radio" id="chat_gpt_usage_this_task1" name="chat_gpt_usage_this_task" value="yes" required>
+          <label for="chat_gpt_usage_this_task1">Yes</label><br>
+          <input type="radio" id="chat_gpt_usage_this_task2" name="chat_gpt_usage_this_task" value="no">
+          <label for="chat_gpt_usage_this_task2">No</label><br>
+
+          <p>Were you aware of previous research investigating AI use among crowd workers? </p>
+          <input type="radio" id="awareness1" name="awareness" value="yes" required>
+          <label for="awareness1">Yes</label><br>
+          <input type="radio" id="awareness2" name="awareness" value="no">
+          <label for="awareness2">No</label><br>
+
+          <p>How often do you use AI tools like ChatGPT in your daily life? </p>
+          <input type="radio" id="chat_gpt_usage_this_task1" name="chat_gpt_usage_general" value="rarely" required>
+          <label for="chat_gpt_usage_this_task1">Rarely</label><br>
+          <input type="radio" id="chat_gpt_usage_this_task2" name="chat_gpt_usage_general" value="occasionally">
+          <label for="chat_gpt_usage_this_task2">Occasionally</label><br>
+          <input type="radio" id="chat_gpt_usage_this_task3" name="chat_gpt_usage_general" value="often">
+          <label for="chat_gpt_usage_this_task3">Often</label><br>
+
+            <br>
+
+        <textarea label="" name="prolific_id" id="pid" style="visibility: hidden; height: 0px;">
+        </textarea>
+
+        <!-- your other form fields go here -->
+        <div>
+            <button type="submit" id="myfreakingbutton">Submit</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
